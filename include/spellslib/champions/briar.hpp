@@ -3,11 +3,11 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, uint16_t range, uint16_t speed, uint16_t width, uint16_t radius, float angle, float delay
+// SpellType type, float range, float speed, float width, float radius, float angle, float delay
 class BriarSpells : public ChampionSpells {
 public:
     Spell get_q() const override {
-        uint16_t range = 450;
+        float range = 450.f;
         float delay = .25f;
         return Spell(SpellType::TARGETTED, range, delay);
     }
@@ -15,8 +15,8 @@ public:
         auto attributes = create_map();
         attributes["width"] = []() { return 60.f; };
         
-        uint16_t range = 300;
-        uint16_t speed = 1200;
+        float range = 300.f;
+        float speed = 1200.f;
         
         return Spell(SpellType::LINEAR, range, speed, 0, attributes);
     }
@@ -24,8 +24,8 @@ public:
         auto attributes = create_map();
         attributes["width"] = []() { return 380.f; };
         
-        uint16_t range = 600;
-        uint16_t speed = 1900;
+        float range = 600.f;
+        float speed = 1900.f;
         
         return Spell(SpellType::LINEAR, range, speed, 0, attributes);
     }
@@ -33,9 +33,9 @@ public:
         auto attributes = create_map();
         attributes["width"] = []() { return 60.f; };
         
-        uint16_t range = 10000;
-        uint16_t speed = 2000;
-        float delay = 1;
+        float range = 10000.f;
+        float speed = 2000.f;
+        float delay = 1.f;
         
         return Spell(SpellType::LINEAR, range, speed, delay, attributes);
     }

@@ -15,18 +15,18 @@ enum class SpellType {
 class Spell {
 private:
     SpellType type;
-    uint16_t range;
-    uint16_t speed;
+    float range;
+    float speed;
     float delay;
-    std::map<std::string, std::function<double()>> attributes;
+    std::map<std::string, std::function<float()>> attributes;
 
 public:        
     Spell(
         SpellType type,
-        uint16_t range,
-        uint16_t speed,
+        float range,
+        float speed,
         float delay,
-        std::map<std::string, std::function<double()>> attributes = std::map<std::string, std::function<double()>>()) : 
+        std::map<std::string, std::function<float()>> attributes = std::map<std::string, std::function<float()>>()) : 
         type(type),
         range(range),
         speed(speed),
@@ -35,9 +35,9 @@ public:
     
     Spell(
         SpellType type, 
-        uint16_t range, 
+        float range, 
         float delay, 
-        std::map<std::string, std::function<double()>> attributes = std::map<std::string, std::function<double()>>()) : 
+        std::map<std::string, std::function<float()>> attributes = std::map<std::string, std::function<float()>>()) : 
         type(type),
         range(range),
         speed(0),
@@ -46,8 +46,8 @@ public:
         
     Spell(
         SpellType type, 
-        uint16_t range, 
-        std::map<std::string, std::function<double()>> attributes = std::map<std::string, std::function<double()>>()) : 
+        float range, 
+        std::map<std::string, std::function<float()>> attributes = std::map<std::string, std::function<float()>>()) : 
         type(type),
         range(range),
         speed(0),
@@ -58,11 +58,11 @@ public:
         return type;
     }
     
-    uint16_t get_range() const {
+    float get_range() const {
         return range;
     }
     
-    uint16_t get_speed() const {
+    float get_speed() const {
         return speed;
     }
     
@@ -70,12 +70,12 @@ public:
         return delay;
     }
     
-    uint16_t get_width() const {
-        return get_property<uint16_t>("width");
+    float get_width() const {
+        return get_property<float>("width");
     }
     
-    uint16_t get_radius() const {
-        return get_property<uint16_t>("radius");
+    float get_radius() const {
+        return get_property<float>("radius");
     }
     
     float get_angle() const {

@@ -3,31 +3,31 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, uint16_t range, uint16_t speed, float delay, std::map<std::string, std::function<double()>> attributes
+// SpellType type, float range, float speed, float delay, std::map<std::string, std::function<double()>> attributes
 class MalphiteSpells : public ChampionSpells {
 public:
     Spell get_q() const override {
-        uint16_t range = 625;
-        uint16_t speed = 1200;
+        float range = 625.f;
+        float speed = 1200.f;
         float delay = .25f;
         return Spell(SpellType::TARGETTED, range, speed, delay);
     }
     Spell get_w() const override {
-        uint16_t range = 0;
+        float range = 0.f;
         return Spell(SpellType::NONE, range);
     }
     Spell get_e() const override {
         auto attributes = create_map();
-        attributes["radius"] = []() { return 250.0f; };
-        uint16_t range = 400;
+        attributes["radius"] = []() { return 250.f; };
+        float range = 400.f;
         float delay = .2419f;
         return Spell(SpellType::CIRCULAR, range, delay, attributes);
     }
     Spell get_r() const override {
         auto attributes = create_map();
-        attributes["radius"] = []() { return 300.0f; };
+        attributes["radius"] = []() { return 300.f; };
         
-        uint16_t range = 1000;
+        float range = 1000.f;
         float delay = .25f;
         
         return Spell(SpellType::CIRCULAR, range, delay, attributes);

@@ -4,21 +4,21 @@
 #include "../spell.hpp"
 #include <algorithm>
 
-// SpellType type, uint16_t range, uint16_t speed, float delay,
+// SpellType type, float range, float speed, float delay,
 // 
-// std::map<std::string, std::function<double()>> attributes
+// std::map<std::string, std::function<float()>> attributes
 class NaafiriSpells : public ChampionSpells {
 public:
     NaafiriSpells(
-        std::map<std::string, std::function<double()>> attributes = std::map<std::string, std::function<double()>>()
+        std::map<std::string, std::function<float()>> attributes = std::map<std::string, std::function<float()>>()
     ) : ChampionSpells(attributes) {}
 
     Spell get_q() const override {
         auto attributes = create_map();
-        attributes["width"] = []() { return 50; };
+        attributes["width"] = []() { return 50.f; };
 
-        uint16_t range = 900;
-        uint16_t speed = 1700;
+        float range = 900.f;
+        float speed = 1700.f;
         float delay = .25f;
 
         return Spell(SpellType::LINEAR, range, speed, delay, attributes);
@@ -26,21 +26,21 @@ public:
     Spell get_w() const override {
         auto packmates = std::min<uint8_t>(std::max<uint8_t>(find_property("packmates"), 0), 3);
         
-        uint16_t range = 700 + (80 * packmates);
+        float range = (float)(700 + (80 * packmates));
         return Spell(SpellType::TARGETTED, range);
     }
     Spell get_e() const override {
         auto attributes = create_map();
-        attributes["radius"] = []() { return 340; };
+        attributes["radius"] = []() { return 340.f; };
 
-        uint16_t range = 350;
-        uint16_t speed = 900;
-        float delay = 0;
+        float range = 350.f;
+        float speed = 900.f;
+        float delay = 0.f;
 
         return Spell(SpellType::CIRCULAR, range, speed, delay, attributes);
     }
     Spell get_r() const override {
-        uint16_t range = 0;
+        float range = 0.f;
         return Spell(SpellType::NONE, range);
     }
 };

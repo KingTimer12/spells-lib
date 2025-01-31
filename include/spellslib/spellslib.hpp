@@ -18,7 +18,7 @@
 class SpellsLibrary {
 private:
     static auto create_attributes() {
-        return std::map<std::string, std::function<double()>>();
+        return std::map<std::string, std::function<float()>>();
     }
 
     template<typename T>
@@ -64,7 +64,7 @@ public:
         update_attributes(spells, "gnartransform", mega_gnar);
         return spells;
     }
-    const GwenSpells& get_gwen(const double timeCast = 0) const {
+    const GwenSpells& get_gwen(const float timeCast = 0) const {
         static GwenSpells spells = []() {
             auto attributes = create_attributes();
             return GwenSpells(attributes);
@@ -72,7 +72,7 @@ public:
         update_attributes(spells, "timecast", timeCast);
         return spells;
     }
-    const VarusSpells& get_varus(const double timeCast = 0, const double gameTime = 0) const {
+    const VarusSpells& get_varus(const float timeCast = 0, const float gameTime = 0) const {
         static VarusSpells spells = []() {
             auto attributes = create_attributes();
             return VarusSpells(attributes);

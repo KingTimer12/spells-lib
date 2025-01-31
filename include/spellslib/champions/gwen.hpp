@@ -3,39 +3,39 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, uint16_t range, uint16_t speed, float delay, std::map<std::string, std::function<double()>> attributes
+// SpellType type, float range, float speed, float delay, std::map<std::string, std::function<float()>> attributes
 class GwenSpells : public ChampionSpells {
 public:
     GwenSpells(
-        std::map<std::string, std::function<double()>> attributes = std::map<std::string, std::function<double()>>()
+        std::map<std::string, std::function<float()>> attributes = std::map<std::string, std::function<float()>>()
     ) : ChampionSpells(attributes) {}
 
     Spell get_q() const override {
-        uint16_t range = 625;
+        float range = 625.f;
         float delay = .25f;
         return Spell(SpellType::TARGETTED, range, delay);
     }
     Spell get_w() const override {
-        uint16_t range = 430;
+        float range = 430.f;
         return Spell(SpellType::NONE, range);
     }
     Spell get_e() const override {
         auto attributes = create_map();
-        attributes["width"] = []() { return 50; };
+        attributes["width"] = []() { return 50.f; };
         
-        uint16_t range = 300;
-        uint16_t speed = 700;
+        float range = 300.f;
+        float speed = 700.f;
         
-        return Spell(SpellType::LINEAR, range, speed, 0, attributes);
+        return Spell(SpellType::LINEAR, range, speed, 0.f, attributes);
     }
     Spell get_r() const override {
         auto timeCast = find_property("timecast");
         auto attributes = create_map();
         
-        uint16_t range = 1200;
-        uint16_t speed = 1800;
+        float range = 1200.f;
+        float speed = 1800.f;
         float delay = timeCast > 1 ? .5f : .25f;
-        attributes["width"] = []() { return 120; };
+        attributes["width"] = []() { return 120.f; };
         
         return Spell(SpellType::LINEAR, range, speed, delay, attributes);
     }
