@@ -32,6 +32,11 @@ public:
     virtual Spell get_e() const = 0;
     virtual Spell get_r() const = 0;
     
+    template<typename T>
+    void update_attributes(std::string field, T value) {
+        this->set_attribute(field, [value]() { return value; });
+    }
+    
     void set_attribute(std::string field, std::function<float()> value) {
         this->attributes[field] = value;
     }

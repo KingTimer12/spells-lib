@@ -1,9 +1,6 @@
 #pragma once
 
-#include <cstdint>
 #include <functional>
-
-#include "champion.hpp"
 
 #include "champions/annie.hpp"
 #include "champions/briar.hpp"
@@ -19,11 +16,6 @@ class SpellsLibrary {
 private:
     static auto create_attributes() {
         return std::map<std::string, std::function<float()>>();
-    }
-
-    template<typename T>
-    static void update_attributes(ChampionSpells& spells, std::string field, T value) {
-        spells.set_attribute(field, [value]() { return value; });
     }
     
 public:
@@ -48,38 +40,38 @@ public:
         return spells;
     }
     
-    const NaafiriSpells& get_naafiri(const uint8_t packmates = 0) const {
+    const NaafiriSpells& get_naafiri() const {
         static NaafiriSpells spells = []() {
             auto attributes = create_attributes();
             return NaafiriSpells(attributes);
         }();
-        update_attributes(spells, "packmates", packmates);
+        // update_attributes(spells, "packmates", packmates);
         return spells;
     }
-    const GnarSpells& get_gnar(const bool mega_gnar = false) const {
+    const GnarSpells& get_gnar() const {
         static GnarSpells spells = []() {
             auto attributes = create_attributes();
             return GnarSpells(attributes);
         }();
-        update_attributes(spells, "gnartransform", mega_gnar);
+        // update_attributes(spells, "gnartransform", mega_gnar);
         return spells;
     }
-    const GwenSpells& get_gwen(const float timeCast = 0) const {
+    const GwenSpells& get_gwen() const {
         static GwenSpells spells = []() {
             auto attributes = create_attributes();
             return GwenSpells(attributes);
         }();
-        update_attributes(spells, "timecast", timeCast);
+        // update_attributes(spells, "timecast", timeCast);
         return spells;
     }
-    const VarusSpells& get_varus(const float timeCast = 0, const float gameTime = 0) const {
+    const VarusSpells& get_varus() const {
         static VarusSpells spells = []() {
             auto attributes = create_attributes();
             return VarusSpells(attributes);
         }();
-        if (spells.find_property("timecast") == 0)
-            update_attributes(spells, "timecast", timeCast);
-        update_attributes(spells, "gametime", gameTime);
+        // if (spells.find_property("timecast") == 0)
+        //     update_attributes(spells, "timecast", timeCast);
+        // update_attributes(spells, "gametime", gameTime);
         return spells;
     }
 };
