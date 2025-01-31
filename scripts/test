@@ -1,5 +1,5 @@
 if [ ! -d "build" ]; then
-    cmake -S . -B build
+    cmake -S . -B build -G Ninja
 fi
-cmake --build build
+ninja -C build/
 ctest --test-dir build
