@@ -6,6 +6,7 @@
 #include "champions/briar.hpp"
 #include "champions/gnar.hpp"
 #include "champions/gwen.hpp"
+#include "champions/kayle.hpp"
 #include "champions/malphite.hpp"
 #include "champions/naafiri.hpp"
 #include "champions/trundle.hpp"
@@ -37,6 +38,10 @@ public:
     }
     const YorickSpells& get_yorick() const {
         static YorickSpells spells;
+        return spells;
+    }
+    const KayleSpells& get_kayle() const {
+        static KayleSpells spells;
         return spells;
     }
     
