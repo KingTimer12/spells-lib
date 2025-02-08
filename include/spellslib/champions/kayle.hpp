@@ -21,7 +21,7 @@ public:
         return Spell(SpellType::TARGETTED, range, delay);
     }
     Spell get_e() const override {
-        return Spell(SpellType::NONE, 0.f);
+        return Spell(SpellType::NONE, 525.f);
     }
     Spell get_r() const override {
         float range = 900.f;
