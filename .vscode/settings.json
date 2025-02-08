@@ -5,6 +5,7 @@
         "*.css": "css",
         "xstring": "cpp",
         "functional": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "map": "cpp"
     }
 }
