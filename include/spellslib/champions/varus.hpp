@@ -9,7 +9,7 @@ class VarusSpells : public ChampionSpells {
 private:
     float get_range(float &timeCast, float &gameTime, float &maxRange, float &minRange) const {
         if (timeCast == 0)
-            return maxRange;
+            return minRange;
         float since_cast = gameTime - timeCast;
         float range = since_cast >= .25f ? std::min<float>(maxRange, minRange + 70 + (since_cast * 1000) * 0.39) : 0;
         return std::max<float>(minRange, range);
