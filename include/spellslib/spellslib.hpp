@@ -13,6 +13,7 @@
 #include "champions/varus.hpp"
 #include "champions/yorick.hpp"
 #include "champions/teemo.hpp"
+#include "champions/jax.hpp"
 
 class SpellsLibrary
 {
@@ -26,6 +27,11 @@ public:
     const AnnieSpells &get_annie() const
     {
         static AnnieSpells spells;
+        return spells;
+    }
+    const JaxSpells &get_jax() const
+    {
+        static JaxSpells spells;
         return spells;
     }
     const BriarSpells &get_briar() const
