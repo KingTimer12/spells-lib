@@ -7,19 +7,25 @@
 class JaxSpells : public ChampionSpells {
 public:
     Spell get_q() const override {
-        float range = 700.f;
-        return Spell(SpellType::TARGETTED, range);
+        return {
+            .type = SpellType::TARGETTED,
+            .range = 700.f
+        };
     }
     Spell get_w() const override {
-        return Spell(SpellType::NONE, 0.f);
+        return {};
     }
     Spell get_e() const override {
-        float range = 375.f;
-        return Spell(SpellType::NONE, range);
+        return {
+            .type = SpellType::NONE,
+            .range = 375.f
+        };
     }
     Spell get_r() const override {
-        float range = 600.f;
-        float delay = .25f;
-        return Spell(SpellType::NONE, range, delay);
+        return {
+          .type = SpellType::TARGETTED,
+          .range = 600.f,
+          .delay = .25f
+        };
     }
 };

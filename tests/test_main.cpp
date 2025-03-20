@@ -30,17 +30,17 @@ TEST(SpellsLibrary, get_briar) {
     auto e = briar.get_e();
     auto r = briar.get_r();
     
-    EXPECT_EQ(q.get_type(), SpellType::TARGETTED);
-    EXPECT_EQ(q.get_range(), 450);
-    EXPECT_EQ(q.get_delay(), .25f);
-    EXPECT_EQ(w.get_type(), SpellType::LINEAR);
-    EXPECT_EQ(w.get_range(), 300);
-    EXPECT_EQ(w.get_speed(), 1200);
-    EXPECT_EQ(e.get_type(), SpellType::LINEAR);
-    EXPECT_EQ(e.get_range(), 600);
-    EXPECT_EQ(e.get_speed(), 1900);
-    EXPECT_EQ(r.get_type(), SpellType::LINEAR);
-    EXPECT_EQ(r.get_range(), 10000);
-    EXPECT_EQ(r.get_speed(), 2000);
-    EXPECT_EQ(r.get_delay(), 1);
+    EXPECT_EQ(q.type, SpellType::TARGETTED);
+    EXPECT_EQ(q.range, 450);
+    EXPECT_EQ(q.delay, .25f);
+    EXPECT_EQ(w.type, SpellType::LINEAR);
+    EXPECT_EQ(w.range, 300);
+    EXPECT_EQ(w.speed, 1200);
+    EXPECT_EQ(e.type, SpellType::LINEAR);
+    EXPECT_EQ(e.range, 600);
+    EXPECT_EQ(e.speed, 1900);
+    EXPECT_EQ(r.type, SpellType::LINEAR);
+    EXPECT_EQ(r.range, 10000);
+    EXPECT_EQ(r.speed, 2000);
+    EXPECT_EQ(r.delay, 1);
 }
