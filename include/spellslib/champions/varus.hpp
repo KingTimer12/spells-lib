@@ -56,13 +56,13 @@ public:
         };
     }
     Spell get_r() const override {
-        auto attributes = create_map();
+        // auto attributes = create_map();
         
-        float range = 1370.f;
-        float speed = 1500.f;
-        float delay = .2419f;
-        attributes["radius"] = []() { return 650.f; };
-        attributes["width"] = []() { return 240.f; };
+        // float range = 1370.f;
+        // float speed = 1500.f;
+        // float delay = .2419f;
+        // attributes["radius"] = []() { return 650.f; };
+        // attributes["width"] = []() { return 240.f; };
         
         return {
             .type = SpellType::LINEAR,
