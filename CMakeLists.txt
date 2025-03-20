@@ -12,14 +12,14 @@ target_include_directories(spellslib INTERFACE
 )
 
 target_compile_definitions(spellslib INTERFACE
-    SPELLSLIB_VERSION="1.0.0"
+    SPELLSLIB_VERSION="1.0.1"
 )
 
 include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
     "${CMAKE_CURRENT_BINARY_DIR}/spellslibConfigVersion.cmake"
-    VERSION 1.0.0
+    VERSION 1.0.1
     COMPATIBILITY SameMajorVersion
 )
 

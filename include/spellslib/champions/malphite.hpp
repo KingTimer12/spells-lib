@@ -7,21 +7,23 @@
 class MalphiteSpells : public ChampionSpells {
 public:
     Spell get_q() const override {
-        float range = 625.f;
-        float speed = 1200.f;
-        float delay = .25f;
-        return Spell(SpellType::TARGETTED, range, speed, delay);
+        return {
+          .type = SpellType::TARGETTED,
+          .range = 625.f,
+          .speed = 1200.f,
+          .delay = .25f
+        };
     }
     Spell get_w() const override {
-        float range = 0.f;
-        return Spell(SpellType::NONE, range);
+        return {};
     }
     Spell get_e() const override {
-        auto attributes = create_map();
-        attributes["radius"] = []() { return 250.f; };
-        float range = 400.f;
-        float delay = .2419f;
-        return Spell(SpellType::CIRCULAR, range, delay, attributes);
+        return {
+            .type = SpellType::CIRCULAR,
+            .range = 400.f,
+            .delay = .2419f,
+            .width = 250.f
+        };
     }
     Spell get_r() const override {
         auto attributes = create_map();
@@ -30,6 +32,11 @@ public:
         float range = 1000.f;
         float delay = .25f;
         
-        return Spell(SpellType::CIRCULAR, range, delay, attributes);
+        return {
+            .type = SpellType::CIRCULAR,
+            .range = 1000.f,
+            .delay = .25f,
+            .radius = 300.f,
+        };
     }
 };

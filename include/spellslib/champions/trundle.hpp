@@ -7,31 +7,31 @@
 class TrundleSpells : public ChampionSpells {
 public:
     Spell get_q() const override {
-        return Spell(SpellType::NONE, 0.f);
+        return{};
     }
     Spell get_w() const override {
-        auto attributes = create_map();
-        attributes["radius"] = []() { return 775.f; };
-        
-        float range = 750.f;
-        float speed = 0.f;
-        float delay = 0.f;
-        
-        return Spell(SpellType::CIRCULAR, range, speed, delay, attributes);
+        return {
+            .type = SpellType::CIRCULAR,
+            .range = 750.f,
+            .speed = 0.f,
+            .delay = 0.f,
+            .radius = 775.f
+        };
     }
     Spell get_e() const override {
-        auto attributes = create_map();
-        attributes["radius"] = []() { return 360.f; };
-        
-        float range = 1000.f;
-        float speed = 0.f;
-        float delay = .25f;
-        
-        return Spell(SpellType::CIRCULAR, range, speed, delay, attributes);
+        return{
+            .type = SpellType::CIRCULAR,
+            .range = 1000.f,
+            .speed = 0.f,
+            .delay = .25f,
+            .radius = 360.f
+        };
     }
     Spell get_r() const override {
-        float range = 650.f;
-        float delay = .25f;
-        return Spell(SpellType::TARGETTED, range, delay);
+        return {
+            .type = SpellType::CIRCULAR,
+            .range = 650.f,
+            .delay = .25f,
+        };
     }
 };

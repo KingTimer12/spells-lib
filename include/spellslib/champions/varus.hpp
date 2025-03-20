@@ -7,7 +7,7 @@
 // SpellType type, float range, float speed, float delay, std::map<std::string, std::function<float()>> attributes
 class VarusSpells : public ChampionSpells {
 private:
-    float get_range(float &timeCast, float &gameTime, float &maxRange, float &minRange) const {
+    float get_range(const float &timeCast, const float &gameTime, const float &maxRange, const float &minRange) const {
         if (timeCast == 0)
             return minRange;
         float since_cast = gameTime - timeCast;
@@ -21,36 +21,39 @@ public:
     ) : ChampionSpells(attributes) {}
 
     Spell get_q() const override {
-        auto timeCast = find_property("timecast");
-        auto gameTime = find_property("gametime");
+        const auto timeCast = find_property("timecast");
+        const auto gameTime = find_property("gametime");
         auto attributes = create_map();
         attributes["width"] = []() { return 140.f; };
         attributes["minRange"] = []() { return 895.f; };
         attributes["maxRange"] = []() { return 1595.f; };
         
-        float delay = 0.f;
-        float maxRange = find_property_from_map(attributes, "maxRange");
-        float minRange = find_property_from_map(attributes, "minRange");
-        float speed = 1900.f;
+        const float speed = 1900.f;
+        const float delay = 0.f;
+        const float minRange = find_property_from_map(attributes, "minRange");
+        const float maxRange = find_property_from_map(attributes, "maxRange");
         
         float range = get_range(timeCast, gameTime, maxRange, minRange);
         attributes["eventHorizon"] = [range, minRange]() { return std::max<float>(minRange, range-300); };
-        
-        return Spell(SpellType::LINEAR, range, speed, delay, attributes);
+
+        return {
+            .attributes = attributes,
+            .type = SpellType::LINEAR,
+            .range = range,
+            .speed = speed,
+            .delay = delay
+        };
     }
     Spell get_w() const override {
-        float range = 0.f;
-        return Spell(SpellType::NONE, range);
+        return {};
     }
     Spell get_e() const override {
-        auto attributes = create_map();
-        attributes["radius"] = []() { return 300.f; };
-        
-        float range = 925.f;
-        float speed = 0.f;
-        float delay = .7419f;
-        
-        return Spell(SpellType::CIRCULAR, range, speed, delay, attributes);
+        return {
+            .type = SpellType::CIRCULAR,
+            .range = 925.f,
+            .delay = .7419f,
+            .radius = 300.f
+        };
     }
     Spell get_r() const override {
         auto attributes = create_map();
@@ -61,6 +64,13 @@ public:
         attributes["radius"] = []() { return 650.f; };
         attributes["width"] = []() { return 240.f; };
         
-        return Spell(SpellType::LINEAR, range, speed, delay, attributes);
+        return {
+            .type = SpellType::LINEAR,
+            .range = 1370.f,
+            .speed = 1500.f,
+            .delay = .2419f,
+            .width = 240.f,
+            .radius = 650.f
+        };
     }
 };

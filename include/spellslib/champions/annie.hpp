@@ -7,23 +7,30 @@
 class AnnieSpells : public ChampionSpells {
 public:
     Spell get_q() const override {
-        float range = 625.f;
-        float delay = .25f;
-        return Spell(SpellType::TARGETTED, range, delay);
+        const Spell spell = Spell{
+            .type = SpellType::TARGETTED,
+            .range = 625.f,
+            .delay = .25f,
+        };
+        return spell;
     }
     Spell get_w() const override {
-        auto attributes = create_map();
-        attributes["angle"] = []() { return 49.52f; };
+        const Spell spell = Spell{
+            .type = SpellType::CONE,
+            .range = 625.f,
+            .speed = 1400.f,
+            .delay = .25f,
+            .angle = 49.52f,
+        };
         
-        float range = 625.f;
-        float speed = 1400.f;
-        float delay = .25f;
-        
-        return Spell(SpellType::CONE, range, speed, delay, attributes);
+        return spell;
     }
     Spell get_e() const override {
-        float range = 800.f;
-        return Spell(SpellType::NONE, range);
+        const Spell spell = Spell{
+            .type = SpellType::NONE,
+            .range = 800.f,
+        };
+        return spell;
     }
     Spell get_r() const override {
         auto attributes = create_map();
@@ -32,6 +39,13 @@ public:
         float range = 600.f;
         float delay = .25f;
         
-        return Spell(SpellType::CIRCULAR, range, delay, attributes);
+        const Spell spell = Spell{
+            .type = SpellType::CIRCULAR,
+            .range = 600.f,
+            .delay = .25f,
+            .radius = 250.f,
+        };
+        
+        return spell;
     }
 };

@@ -9,17 +9,17 @@ TEST(SpellsLibrary, get_annie) {
     auto e = annie.get_e();
     auto r = annie.get_r();
     
-    EXPECT_EQ(q.get_type(), SpellType::TARGETTED);
-    EXPECT_EQ(q.get_range(), 625);
-    EXPECT_EQ(w.get_type(), SpellType::CONE);
-    EXPECT_EQ(w.get_range(), 625);
-    EXPECT_EQ(w.get_speed(), 1400);
-    EXPECT_EQ(w.get_delay(), .25f);
-    EXPECT_EQ(e.get_type(), SpellType::NONE);
-    EXPECT_EQ(e.get_range(), 800);
-    EXPECT_EQ(r.get_type(), SpellType::CIRCULAR);
-    EXPECT_EQ(r.get_range(), 600);
-    EXPECT_EQ(r.get_delay(), .25f);
+    EXPECT_EQ(q.type, SpellType::TARGETTED);
+    EXPECT_EQ(q.range, 625);
+    EXPECT_EQ(w.type, SpellType::CONE);
+    EXPECT_EQ(w.range, 625);
+    EXPECT_EQ(w.speed, 1400);
+    EXPECT_EQ(w.delay, .25f);
+    EXPECT_EQ(e.type, SpellType::NONE);
+    EXPECT_EQ(e.range, 800);
+    EXPECT_EQ(r.type, SpellType::CIRCULAR);
+    EXPECT_EQ(r.range, 600);
+    EXPECT_EQ(r.delay, .25f);
 }
 
 TEST(SpellsLibrary, get_briar) {

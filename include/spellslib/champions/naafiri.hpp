@@ -14,33 +14,32 @@ public:
     ) : ChampionSpells(attributes) {}
 
     Spell get_q() const override {
-        auto attributes = create_map();
-        attributes["width"] = []() { return 50.f; };
-
-        float range = 900.f;
-        float speed = 1700.f;
-        float delay = .25f;
-
-        return Spell(SpellType::LINEAR, range, speed, delay, attributes);
+        return {
+            .type = SpellType::LINEAR,
+            .range = 900.f,
+            .speed = 1700.f,
+            .delay = .25f,
+            .width = 50.f
+        };
     }
     Spell get_w() const override {
-        auto packmates = std::min<uint8_t>(std::max<uint8_t>(find_property("packmates"), 0), 3);
+        const auto packmates = std::min<uint8_t>(std::max<uint8_t>(find_property("packmates"), 0), 3);
         
-        float range = (float)(700 + (80 * packmates));
-        return Spell(SpellType::TARGETTED, range);
+        return {
+            .type = SpellType::TARGETTED,
+            .range = (float)(700 + (80 * packmates)),
+        };
     }
     Spell get_e() const override {
-        auto attributes = create_map();
-        attributes["radius"] = []() { return 340.f; };
-
-        float range = 350.f;
-        float speed = 900.f;
-        float delay = 0.f;
-
-        return Spell(SpellType::CIRCULAR, range, speed, delay, attributes);
+        return {
+            .type = SpellType::CIRCULAR,
+            .range = 350.f,
+            .speed = 900.f,
+            .delay = .0f,
+            .radius = 340.f,
+        };
     }
     Spell get_r() const override {
-        float range = 0.f;
-        return Spell(SpellType::NONE, range);
+        return {};
     }
 };

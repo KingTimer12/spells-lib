@@ -11,32 +11,35 @@ public:
     ) : ChampionSpells(attributes) {}
 
     Spell get_q() const override {
-        float range = 625.f;
-        float delay = .25f;
-        return Spell(SpellType::TARGETTED, range, delay);
+        return {
+            .type = SpellType::TARGETTED,
+            .range = 625.f,
+            .delay = .25f,
+        };
     }
     Spell get_w() const override {
-        float range = 430.f;
-        return Spell(SpellType::NONE, range);
+        return {
+            .type = SpellType::NONE,
+            .range = 430.f,
+        };
     }
     Spell get_e() const override {
-        auto attributes = create_map();
-        attributes["width"] = []() { return 50.f; };
-        
-        float range = 300.f;
-        float speed = 700.f;
-        
-        return Spell(SpellType::LINEAR, range, speed, 0.f, attributes);
+        return {
+            .type = SpellType::LINEAR,
+            .range = 300.f,
+            .speed = 700.f,
+            .delay = 0.f,
+            .width = 50.f,
+        };
     }
     Spell get_r() const override {
         auto timeCast = find_property("timecast");
-        auto attributes = create_map();
-        
-        float range = 1200.f;
-        float speed = 1800.f;
-        float delay = timeCast > 1 ? .5f : .25f;
-        attributes["width"] = []() { return 120.f; };
-        
-        return Spell(SpellType::LINEAR, range, speed, delay, attributes);
+        return {
+            .type = SpellType::LINEAR,
+            .range = 1200.f,
+            .speed = 1800.f,
+            .delay = timeCast > 1 ? .5f : .25f,
+            .width = 120.f,
+        };
     }
 };
