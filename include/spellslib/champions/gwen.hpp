@@ -13,10 +13,7 @@ class GwenSpells : public ChampionSpells {
 
   Spell get_q() const override {
     return {
-        .type = SpellType::TARGETTED,
-        .range = 625.f,
-        .delay = .25f,
-    };
+        .type = SpellType::LINEAR, .range = 625.f, .delay = .5f, .width = 50.f};
   }
   Spell get_w() const override {
     return {
