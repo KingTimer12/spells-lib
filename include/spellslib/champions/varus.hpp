@@ -5,9 +5,8 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-
-// SpellType type, float range, float speed, float delay, std::map<std::string,
-// std::function<float()>> attributes
+// SpellTypeData type, float range, float speed, float delay,
+// std::map<std::string, std::function<float()>> attributes
 class VarusSpells : public ChampionSpells {
  private:
   float get_range(const float &timeCast, const float &gameTime,
@@ -46,14 +45,14 @@ class VarusSpells : public ChampionSpells {
     };
 
     return {.attributes = attributes,
-            .type = SpellType::LINEAR,
+            .type = SpellTypeData::LINEAR,
             .range = range,
             .speed = speed,
             .delay = delay};
   }
   Spell get_w() const override { return {}; }
   Spell get_e() const override {
-    return {.type = SpellType::CIRCULAR,
+    return {.type = SpellTypeData::CIRCULAR,
             .range = 925.f,
             .delay = .7419f,
             .radius = 300.f};
@@ -67,7 +66,7 @@ class VarusSpells : public ChampionSpells {
     // attributes["radius"] = []() { return 650.f; };
     // attributes["width"] = []() { return 240.f; };
 
-    return {.type = SpellType::LINEAR,
+    return {.type = SpellTypeData::LINEAR,
             .range = 1370.f,
             .speed = 1500.f,
             .delay = .2419f,

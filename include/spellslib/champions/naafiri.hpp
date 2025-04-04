@@ -5,8 +5,7 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-
-// SpellType type, float range, float speed, float delay,
+// SpellTypeData type, float range, float speed, float delay,
 //
 // std::map<std::string, std::function<float()>> attributes
 class NaafiriSpells : public ChampionSpells {
@@ -16,7 +15,7 @@ class NaafiriSpells : public ChampionSpells {
       : ChampionSpells(attributes) {}
 
   Spell get_q() const override {
-    return {.type = SpellType::LINEAR,
+    return {.type = SpellTypeData::LINEAR,
             .range = 900.f,
             .speed = 1700.f,
             .delay = .25f,
@@ -27,13 +26,13 @@ class NaafiriSpells : public ChampionSpells {
         std::min<uint8_t>(std::max<uint8_t>(find_property("packmates"), 0), 3);
 
     return {
-        .type = SpellType::TARGETTED,
+        .type = SpellTypeData::TARGETTED,
         .range = (float)(700 + (80 * packmates)),
     };
   }
   Spell get_e() const override {
     return {
-        .type = SpellType::CIRCULAR,
+        .type = SpellTypeData::CIRCULAR,
         .range = 350.f,
         .speed = 900.f,
         .delay = .0f,

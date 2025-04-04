@@ -3,19 +3,19 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, float range, float speed, float delay, std::map<std::string,
-// std::function<double()>> attributes
+// SpellTypeData type, float range, float speed, float delay,
+// std::map<std::string, std::function<double()>> attributes
 class MalphiteSpells : public ChampionSpells {
  public:
   Spell get_q() const override {
-    return {.type = SpellType::TARGETTED,
+    return {.type = SpellTypeData::TARGETTED,
             .range = 625.f,
             .speed = 1200.f,
             .delay = .25f};
   }
   Spell get_w() const override { return {}; }
   Spell get_e() const override {
-    return {.type = SpellType::CIRCULAR,
+    return {.type = SpellTypeData::CIRCULAR,
             .range = 400.f,
             .delay = .2419f,
             .width = 250.f};
@@ -28,7 +28,7 @@ class MalphiteSpells : public ChampionSpells {
     float delay = .25f;
 
     return {
-        .type = SpellType::CIRCULAR,
+        .type = SpellTypeData::CIRCULAR,
         .range = 1000.f,
         .delay = .25f,
         .radius = 300.f,

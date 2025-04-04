@@ -3,8 +3,8 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, float range, float speed, float delay, std::map<std::string,
-// std::function<float()>> attributes
+// SpellTypeData type, float range, float speed, float delay,
+// std::map<std::string, std::function<float()>> attributes
 class GnarSpells : public ChampionSpells {
  public:
   GnarSpells(std::map<std::string, std::function<float()>> attributes =
@@ -15,7 +15,7 @@ class GnarSpells : public ChampionSpells {
     auto megaGnar = find_property("gnartransform");
 
     return {
-        .type = SpellType::LINEAR,
+        .type = SpellTypeData::LINEAR,
         .range = megaGnar ? 1150.f : 1125.f,
         .speed = megaGnar ? 2100.f : 2500.f,
         .delay = megaGnar ? .5f : .25f,
@@ -24,7 +24,7 @@ class GnarSpells : public ChampionSpells {
   }
   Spell get_w() const override {
     return {
-        .type = SpellType::LINEAR,
+        .type = SpellTypeData::LINEAR,
         .range = 550.f,
         .speed = 0.f,
         .delay = .6f,
@@ -34,14 +34,14 @@ class GnarSpells : public ChampionSpells {
   Spell get_e() const override {
     auto megaGnar = find_property("gnartransform");
     return {
-        .type = SpellType::CIRCULAR,
+        .type = SpellTypeData::CIRCULAR,
         .range = megaGnar ? 675.f : 475.f,
         .radius = megaGnar ? 375.f : 150.f,
     };
   }
   Spell get_r() const override {
     return {
-        .type = SpellType::LINEAR,
+        .type = SpellTypeData::LINEAR,
         .range = 475.f,
         .width = 475.f,
     };

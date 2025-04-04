@@ -3,8 +3,8 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, float range, float speed, float delay, std::map<std::string,
-// std::function<double()>> attributes
+// SpellTypeData type, float range, float speed, float delay,
+// std::map<std::string, std::function<double()>> attributes
 class KindredSpells : public ChampionSpells {
  private:
   float get_range(float mark) const {
@@ -14,11 +14,11 @@ class KindredSpells : public ChampionSpells {
 
  public:
   Spell get_q() const override {
-    return {.type = SpellType::TARGETTED, .range = 300.f};  // dash range
+    return {.type = SpellTypeData::TARGETTED, .range = 300.f};  // dash range
   }
   Spell get_w() const override {
     return {
-        .type = SpellType::CIRCULAR,
+        .type = SpellTypeData::CIRCULAR,
         .range = 500.f,
         .speed = 1400.f,
         .radius = 800.f,
@@ -27,9 +27,9 @@ class KindredSpells : public ChampionSpells {
   Spell get_e() const override {
     const auto mark = find_property("mark");
     const auto range = get_range(mark);
-    return {.type = SpellType::TARGETTED, .range = range, .delay = .25f};
+    return {.type = SpellTypeData::TARGETTED, .range = range, .delay = .25f};
   }
   Spell get_r() const override {
-    return {.type = SpellType::NONE, .range = 535.f};
+    return {.type = SpellTypeData::NONE, .range = 535.f};
   }
 };

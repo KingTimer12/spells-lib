@@ -3,22 +3,22 @@
 #include "../champion.hpp"
 #include "../spell.hpp"
 
-// SpellType type, float range, float speed, float delay, std::map<std::string,
-// std::function<double()>> attributes
+// SpellTypeData type, float range, float speed, float delay,
+// std::map<std::string, std::function<double()>> attributes
 class YorickSpells : public ChampionSpells {
  public:
   Spell get_q() const override {
-    return {.type = SpellType::NONE, .range = 2000.f};
+    return {.type = SpellTypeData::NONE, .range = 2000.f};
   }
   Spell get_w() const override {
-    return {.type = SpellType::CIRCULAR,
+    return {.type = SpellTypeData::CIRCULAR,
             .range = 600.f,
             .speed = 1400.f,
             .delay = .0f,
             .radius = 225.f};
   }
   Spell get_e() const override {
-    return {.type = SpellType::LINEAR,
+    return {.type = SpellTypeData::LINEAR,
             .range = 700.f,
             .speed = .0f,
             .delay = .25f,

@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 
-enum class SpellType {
+enum class SpellTypeData {
   CONE,
   CIRCULAR,
   LINEAR,
@@ -17,7 +17,7 @@ class Spell {
  public:
   std::map<std::string, std::function<float()>> attributes;
 
-  SpellType type = SpellType::NONE;
+  SpellTypeData type = SpellTypeData::NONE;
   float range = FLT_MAX;
   float speed = FLT_MAX;
   float delay = .0f;
