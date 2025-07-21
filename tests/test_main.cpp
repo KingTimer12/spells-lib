@@ -12,6 +12,7 @@ TEST(SpellsLibrary, get_annie) {
 
   EXPECT_EQ(q.type, SpellTypeData::TARGETTED);
   EXPECT_EQ(q.range, 625);
+  EXPECT_EQ(q.damage({1, 30}), 92.5);
   EXPECT_EQ(w.type, SpellTypeData::CONE);
   EXPECT_EQ(w.range, 625);
   EXPECT_EQ(w.speed, 1400);

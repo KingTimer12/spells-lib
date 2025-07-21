@@ -24,6 +24,7 @@ class Spell {
   float width = .0f;
   float radius = .0f;
   float angle = .0f;
+  std::function<float(std::vector<float>)> damage = [](std::vector<float>) { return 0.0f; };
 
   template <typename T>
   T get_property(const std::string& property_name) const {

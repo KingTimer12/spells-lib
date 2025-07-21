@@ -12,6 +12,12 @@ class AnnieSpells : public ChampionSpells {
         .type = SpellTypeData::TARGETTED,
         .range = 625.f,
         .delay = .25f,
+        .damage = [](std::vector<float> args) {
+            const float ap = args[1];
+            const float level = args[0];
+            const std::vector<float> damage_list = {70.f, 105.f, 140.f, 175.f, 210.f};
+            return damage_list[level - 1] + (0.75 * ap);
+        }
     };
   }
   Spell get_w() const override {
