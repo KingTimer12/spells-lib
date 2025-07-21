@@ -15,8 +15,8 @@ class AnnieSpells : public ChampionSpells {
         .damage = [](std::vector<float> args) {
             const float ap = args[1];
             const float level = args[0];
-            const std::vector<float> damage_list = {70.f, 105.f, 140.f, 175.f, 210.f};
-            return damage_list[level - 1] + (0.75 * ap);
+            static constexpr float damage_list[] = {70.f, 105.f, 140.f, 175.f, 210.f};
+            return damage_list[static_cast<int>(level) - 1] + (0.75f * ap);
         }
     };
   }
@@ -27,6 +27,12 @@ class AnnieSpells : public ChampionSpells {
         .speed = 1400.f,
         .delay = .25f,
         .angle = 49.52f,
+        .damage = [](std::vector<float> args) {
+            const float ap = args[1];
+            const float level = args[0];
+            static constexpr float damage_list[] = {70.f, 115.f, 160.f, 205.f, 250.f};
+            return damage_list[static_cast<int>(level) - 1] + (0.85f * ap);
+        }
     };
   }
   Spell get_e() const override {
@@ -41,6 +47,12 @@ class AnnieSpells : public ChampionSpells {
         .range = 600.f,
         .delay = .25f,
         .radius = 250.f,
+        .damage = [](std::vector<float> args) {
+            const float ap = args[1];
+            const float level = args[0];
+            static constexpr float damage_list[] = {150.f, 275.f, 400.f};
+            return damage_list[static_cast<int>(level) - 1] + (0.75f * ap);
+        }
     };
   }
 };
